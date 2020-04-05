@@ -28,17 +28,28 @@ public class Application implements CommandLineRunner {
             logger.info(arg);
         }
 
-        logger.info("----Environment Properties----");
+        logger.info("----Environment Properties from ConfigMaps & Secrets----");
+
+        logger.info("===========================================");
+        logger.info("Application running on container: " + System.getenv("HOSTNAME"));
+        logger.info("===========================================");
+
+
         logger.info("spring.datasource.url: " + environment.getProperty("spring.datasource.url"));
         logger.info("spring.datasource.username: " + environment.getProperty("spring.datasource.username"));
         logger.info("spring.datasource.password: " + environment.getProperty("spring.datasource.password"));
         logger.info("spring.jpa.database-platform: " + environment.getProperty("spring.jpa.database-platform"));
         logger.info("spring.jpa.hibernate.ddl-auto: " + environment.getProperty("spring.jpa.hibernate.ddl-auto"));
 
-        logger.info("MYSQL_ROOT_PASSWORD: " + System.getenv("MYSQL_ROOT_PASSWORD"));
-        logger.info("MYSQL_USER: " + System.getenv("MYSQL_USER"));
-        logger.info("MYSQL_PASSWORD: " + System.getenv("MYSQL_PASSWORD"));
-        logger.info("MYSQL_DATABASE: " + System.getenv("MYSQL_DATABASE"));
+
+        logger.info("===========================================");
+        logger.info("Database configuration running inside the container");
+        logger.info("===========================================");
+
+        logger.info("Database URL: " + System.getenv("SPRING_DATASOURCE_URL"));
+        logger.info("MYSQL_ROOT_PASSWORD: " + System.getenv("SPRING_DATASOURCE_PASSWORD"));
+        logger.info("MYSQL_USER: " + System.getenv("SPRING_DATASOURCE_USERNAME"));
+        logger.info("MYSQL_PASSWORD: " + System.getenv("SPRING_DATASOURCE_PASSWORD"));
 
         logger.info("----End logging Application----");
     }
