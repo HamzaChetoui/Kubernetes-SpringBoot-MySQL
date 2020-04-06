@@ -8,6 +8,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.env.Environment;
 
+import javax.persistence.PostLoad;
+
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
@@ -19,7 +21,7 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        logger.info("\n----Begin logging Application----");
+        logger.info("----Begin logging Application----");
 
         logger.info("----System Properties from VM Arguments----");
         logger.info("server.port: " + System.getProperty("server.port"));
